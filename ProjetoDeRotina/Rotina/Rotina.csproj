@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=5.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.5.3.0\lib\net461\SimpleInjector.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,11 +54,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjetoDeRotina.Domain\ProjetoDeRotina.Domain.csproj">
       <Project>{32DF221A-CE47-4734-8F7D-8BDF93AA763C}</Project>
       <Name>ProjetoDeRotina.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetoRotina.Infra\ProjetoRotina.Infra.csproj">
+      <Project>{F9FA638B-8048-4A8B-AD7A-312066501310}</Project>
+      <Name>ProjetoRotina.Infra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RotinaApplication\RotinaApplication.csproj">
+      <Project>{73C793FA-1F4D-46F9-8DD3-2C425A1BCC52}</Project>
+      <Name>RotinaApplication</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

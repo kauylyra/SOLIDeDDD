@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace RotinaApplication.ViewModels
+namespace ProjetoRotinaModelo.ViewModel
 {
     public class JogadorViewModel
     {
@@ -15,5 +15,6 @@ namespace RotinaApplication.ViewModels
         public string Nome_Time { get; set; }
         public string Estado { get; set; }
         public int Salario { get; set; }
+        public string Email { get; set; }
     }
 }

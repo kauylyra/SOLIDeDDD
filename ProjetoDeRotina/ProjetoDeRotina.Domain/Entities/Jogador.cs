@@ -12,10 +12,11 @@ namespace ProjetoDeRotina.Domain.Entities
         {
 
         }
-        public Guid Id_Jogador { get; set; }
+        public decimal ID_Jogador { get; set; }
         public String Nome { get; set; }
         public string Nome_Time { get; set; }
         public string Estado { get; set; }
         public int Salario { get; set; }
+        //public string Email { get; set; }
     }
 }

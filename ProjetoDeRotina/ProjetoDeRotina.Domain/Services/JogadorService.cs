@@ -3,32 +3,41 @@ using ProjetoDeRotina.Domain.Interfaces.Repository;
 using ProjetoDeRotina.Domain.Service;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoDeRotina.Domain.Services
 {
-    public class JogadorService : IJogadorService
+    public class JogadorService : IJogadorService 
     {
-        private readonly IJogadorService _jogadorService;
+        private readonly IRepositoryBase _repositoryBase;
+        public JogadorService(IRepositoryBase jogadorRepository)
+        {
+            _repositoryBase = jogadorRepository;
+        }
         public Jogador Adicionar(Jogador jogador)
         {
-            return _jogadorService.Adicionar(jogador);
+            return _repositoryBase.Adicionar(jogador);
         }
 
-        public Jogador ObterPorId(Guid id)
+        public Jogador Alterar(Jogador jogador)
         {
-            return _jogadorService.ObterPorId(id);
+           return _repositoryBase.Alterar(jogador);
         }
 
-        public void Remover(Guid id)
+        public void Remover(decimal id)
         {
-            _jogadorService.Remover(id);
+            _repositoryBase.Remover(id);
         }
+
+        public Jogador ObterJogador()
+        {
+            return _repositoryBase.ObterJogador();
+        }
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _repositoryBase.Dispose();
         }
+
+       
     }
 }

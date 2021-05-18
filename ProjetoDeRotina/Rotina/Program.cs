@@ -1,37 +1,51 @@
 ﻿using ProjetoDeRotina.Domain.Entities;
-using ProjetoDeRotina.Domain.Services;
+using ProjetoRotina.Infra;
+using RotinaApplication.Interfaces;
+using SimpleInjector;
 using System;
 
 namespace Rotina
 {
     class Program
     {
+        private static readonly Container container;
+        static Program()
+        {
+            container = new Container();
+            ServiceLocator.RegisterServices(container);
+
+            container.Verify();
+        }
         static void Main(string[] args)
         {
-            string nome = "";
-            string nome_Time = "";
-            string estado = "";
-            int salario = 0;
             Console.WriteLine("Programa para incluir um Jogador ao time");
-            Console.WriteLine("Informe o NOME do jogador: ");
-            nome = Console.ReadLine();
-            Console.WriteLine("Informe o NOME do time que joga: ");
-            nome_Time = Console.ReadLine();
-            Console.WriteLine("Informe qual o estado do time:  ");
-            estado = Console.ReadLine();
-            Console.WriteLine("Informe qual o salário que o jogador ganha. ");
-            salario = int.Parse(Console.ReadLine());
+            Executar();
+            Console.WriteLine("Fim.");
+            Console.ReadKey();
+        }
+
+        static void Executar()
+        {
+            var app = container.GetInstance<IJogadorAppService>();
             Jogador jogador = new Jogador()
             {
-                Nome = nome,
-                Nome_Time = nome_Time,
-                Estado = estado,
-                Salario = salario
+                Nome = "bla",
+                Nome_Time = "",
+                Estado = "",
+                Salario = 6000
             };
-            JogadorService jogadorService = new JogadorService();
-            var addJogador = jogadorService.Adicionar(jogador);
-            Console.WriteLine(addJogador);
-            Console.ReadKey();
+            app.Adicionar(jogador);
+            var jogador2 = new Jogador()
+            {
+                Nome = "",
+                Nome_Time = "",
+                Estado = "",
+                Salario = 4000
+            };
+            app.Adicionar(jogador2);
+            app.Alterar(jogador2);
+            app.Remover(jogador2.ID_Jogador);
+            Console.WriteLine("E-mail enviado com Sucesso!");
         }
     }
 }
